@@ -1,0 +1,43 @@
+@use '../../styles/mixins/flexbox';
+@use '../../styles/constants/colors';
+
+.tabWrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 1080px;
+  padding-bottom: 3vh;
+  @include flexbox.flexbox(center, center);
+
+  button {
+    flex: 1;
+    padding-top: 3vh;
+    background-color: colors.$BG;
+
+    > div {
+      @include flexbox.flexbox(center, center);
+      flex-direction: column;
+      font-size: 1rem;
+
+      span {
+        display: block;
+        padding: 4% 0;
+        margin: 0 auto;
+      }
+
+      svg {
+        display: block;
+        width: fit-content;
+        height: 1.5rem;
+      }
+    }
+
+    .active {
+      color: colors.$ACTIVE_TEXT;
+    }
+
+    .inActive {
+      color: colors.$INACTIVE_TEXT;
+    }
+  }
+}
