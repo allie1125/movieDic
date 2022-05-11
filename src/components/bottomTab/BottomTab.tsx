@@ -1,23 +1,28 @@
-import styles from './bottomTab.module.scss'
-import { BsSearch, BsBookmarkStar } from 'react-icons/bs'
+import { NavLink } from 'react-router-dom';
+import styles from './bottomTab.module.scss';
+import { BsSearch, BsBookmarkStar } from 'react-icons/bs';
 
 const BottomTab = () => {
   return (
     <div className={styles.tabWrapper}>
       <button type='button'>
-        <div className={styles.active}>
-          <BsSearch className={styles.reactIcons} />
-          <span>검색</span>
-        </div>
+        <NavLink to='/' className={({ isActive }) => (isActive ? styles.active : styles.inActive)}>
+          <div>
+            <BsSearch className={styles.reactIcons} />
+            <span>검색</span>
+          </div>
+        </NavLink>
       </button>
       <button type='button'>
-        <div className={styles.inActive}>
-          <BsBookmarkStar className={styles.reactIcons} />
-          <span>즐겨찾기</span>
-        </div>
+        <NavLink to='/bookMark' className={({ isActive }) => (isActive ? styles.active : styles.inActive)}>
+          <div>
+            <BsBookmarkStar className={styles.reactIcons} />
+            <span>즐겨찾기</span>
+          </div>
+        </NavLink>
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default BottomTab
+export default BottomTab;

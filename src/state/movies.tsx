@@ -5,3 +5,8 @@ export const searchedMovieState = atom<IMovieAPIRes>({
   key: '#searchedMovie',
   default: {} as IMovieAPIRes,
 });
+
+export const pageNumberState = atom({
+  key: '#page',
+  default: 1,
+});

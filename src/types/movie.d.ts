@@ -11,3 +11,7 @@ export interface IMovieAPIRes {
   totalResults: string;
   Response: string;
 }
+
+export interface IPageNumber {
+  page: number;
+}

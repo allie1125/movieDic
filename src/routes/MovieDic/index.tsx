@@ -3,12 +3,14 @@ import styles from './MovieDic.module.scss';
 
 import { useMount, useState } from 'hooks';
 
-import { getMovieApi } from 'services/movie';
-import { IMovieAPIRes } from 'types/movie.d';
 import MovieCard from 'components/movieCard/MovieCard';
-import WeatherItem from 'routes/Weathers/Item';
+import { useRecoilValue } from 'recoil';
+import { searchedMovieState } from 'state/movies';
 
 const MovieDic = () => {
+  const movies = useRecoilValue(searchedMovieState);
+  console.log('moviedic page - movies?', movies);
+
   // const [movie, setMovie] = useState<IMovieAPIRes>();
   // useMount(() => {
   //   getMovieApi({

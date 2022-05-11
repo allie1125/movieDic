@@ -3,7 +3,16 @@
 // v2.0 | 20110126
 // License: none (public domain)
 
-html,
+html {
+  height: 100%;
+  background-color: #191b26;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  border: 0;
+}
 body,
 div,
 span,
