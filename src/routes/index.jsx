@@ -1,26 +1,26 @@
-import styles from './Routes.module.scss'
-import MovieDic from './MovieDic'
+import styles from './Routes.module.scss';
+import MovieDic from './MovieDic';
 // import Favorite from './Favorite'
-import { RecoilRoot } from 'recoil'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import SearchBar from '../components/searchBar/SearchBar'
-import BottomTab from '../components/bottomTab/BottomTab'
+import { RecoilRoot } from 'recoil';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Layout from 'components/layout/Layout';
 
 const App = () => {
   return (
     <div className={styles.app}>
       <RecoilRoot>
-        <SearchBar />
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<MovieDic />} />
-            {/* <Route path='/' element={<Favorite />} /> */}
+            <Route path='/' element={<Layout />}>
+              <Route index element={<MovieDic />} />
+              {/* <Route path='/' element={<Favorite />} /> */}
+            </Route>
           </Routes>
         </BrowserRouter>
-        <BottomTab />
       </RecoilRoot>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

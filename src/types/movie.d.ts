@@ -1,13 +1,13 @@
 interface Search {
-  Title: string
-  Year: string
-  imdbID: string
-  Type: string
-  Poster: string
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
 }
 
 export interface IMovieAPIRes {
-  Search: Search[]
-  totalResults: string
-  Response: string
+  Search: Search[];
+  totalResults: string;
+  Response: string;
 }

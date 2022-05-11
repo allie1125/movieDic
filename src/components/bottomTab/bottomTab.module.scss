@@ -6,13 +6,12 @@
   bottom: 0;
   width: 100%;
   max-width: 1080px;
-  padding-bottom: 3vh;
+  padding: 3vh 0;
+  background-color: colors.$BG;
   @include flexbox.flexbox(center, center);
 
   button {
     flex: 1;
-    padding-top: 3vh;
-    background-color: colors.$BG;
 
     > div {
       @include flexbox.flexbox(center, center);

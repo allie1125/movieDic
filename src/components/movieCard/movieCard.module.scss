@@ -6,10 +6,9 @@
   grid-template-columns: repeat(auto-fit, 20rem);
   grid-column-gap: 1rem;
   justify-content: center;
-  width: 80%;
   max-width: 1080px;
   height: 70%;
-  padding: 5% 0;
+  padding: 2% 0;
   overflow-y: scroll;
 
   .movieCard {
@@ -35,6 +34,7 @@
     grid-template-columns: 1fr;
 
     .movieCard {
+      width: 18rem;
       height: 12rem;
     }
   }
