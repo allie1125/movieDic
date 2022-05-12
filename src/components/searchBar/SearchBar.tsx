@@ -8,9 +8,15 @@ import useDebounce from 'hooks/useDebounce';
 
 const SearchBar = () => {
   const [, setSearchedMovieList] = useRecoilState(searchedMovieState);
-  const pageNumber = useRecoilValue(pageNumberState);
+  const [pageNumber, setPageNumber] = useRecoilState(pageNumberState);
   const [searchKeyword, setSearchKeyword] = useState('');
   const debouncedSearch = useDebounce(searchKeyword, 500);
+
+  useEffect(() => {
+    if (searchKeyword === '') {
+      setSearchedMovieList([]);
+    }
+  }, [searchKeyword]);
 
   useEffect(() => {
     if (debouncedSearch) {
@@ -23,7 +29,7 @@ const SearchBar = () => {
             if (pageNumber === 0) {
               setSearchedMovieList(res.data.Search);
             } else {
-              res.data.Search.map((el) => setSearchedMovieList((prev: any) => [...prev, el]));
+              res?.data?.Search?.map((el) => setSearchedMovieList((prev: any) => [...prev, el]));
             }
           }
         })
