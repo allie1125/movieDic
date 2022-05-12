@@ -13,19 +13,23 @@ const SearchBar = () => {
   const debouncedSearch = useDebounce(searchKeyword, 500);
 
   useEffect(() => {
-    if (searchKeyword === '') {
-      setSearchedMovieList([]);
-    }
+    setSearchedMovieList([]);
+    setPageNumber(1);
   }, [searchKeyword]);
 
   useEffect(() => {
+    console.log('pageNumber?', pageNumber);
+  }, [pageNumber]);
+
+  useEffect(() => {
+    console.log('debounced');
     if (debouncedSearch) {
       getMovieApi({
         s: searchKeyword,
         page: pageNumber,
       })
         .then((res) => {
-          if (res.data.Response === 'True') {
+          if (res?.data?.Response === 'True') {
             if (pageNumber === 0) {
               setSearchedMovieList(res.data.Search);
             } else {
