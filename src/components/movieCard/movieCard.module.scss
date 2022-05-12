@@ -1,69 +1,49 @@
 @use '../../styles/mixins/flexbox';
 @use '../../styles/constants/colors';
 
-.cardWrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 20rem);
-  grid-column-gap: 1rem;
-  justify-content: center;
-  height: 70%;
-  padding: 10rem 10%;
-  overflow-y: scroll;
+.movieCard {
+  @include flexbox.flexbox(center, center);
+  height: 15rem;
+  padding: 2% 2% 2% 0;
+  margin: 5% 0;
+  text-align: center;
+  background-color: #2b2b38;
+  border-radius: 10px;
 
-  .movieCard {
-    @include flexbox.flexbox(center, center);
-    height: 15rem;
-    padding: 2% 2% 2% 0;
-    margin: 5% 0;
-    text-align: center;
-    background-color: #2b2b38;
-    border-radius: 10px;
+  .posterWrapper {
+    flex: 2.5;
+    width: 100%;
+    height: inherit;
 
-    .posterWrapper {
-      flex: 2.5;
-      width: 100%;
+    img {
+      width: inherit;
       height: inherit;
-
-      img {
-        width: inherit;
-        height: inherit;
-        object-fit: fill;
-        border-radius: 10px 0 0 10px;
-      }
-    }
-
-    .textWrapper {
-      flex: 1.5;
-      padding: 0 5%;
-      font-size: 1em;
-      color: colors.$ACTIVE_TEXT;
-
-      ul {
-        line-height: 1.2;
-
-        :first-child {
-          padding: 8% 0;
-          font-weight: bold;
-        }
-      }
+      object-fit: fill;
+      border-radius: 10px 0 0 10px;
     }
   }
 
-  .observerDiv {
-    width: 100%;
-    height: 20px;
-    background-color: red;
+  .textWrapper {
+    flex: 1.5;
+    padding: 0 5%;
+    font-size: 1em;
+    color: colors.$ACTIVE_TEXT;
+
+    ul {
+      line-height: 1.2;
+
+      :first-child {
+        padding: 8% 0;
+        font-weight: bold;
+      }
+    }
   }
 }
 
 @media (max-width: 480px) {
-  .cardWrapper {
-    grid-template-columns: 1fr;
-
-    .movieCard {
-      justify-content: center;
-      width: 100%;
-      height: 12rem;
-    }
+  .movieCard {
+    justify-content: center;
+    width: 100%;
+    height: 12rem;
   }
 }

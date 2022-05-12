@@ -8,8 +8,8 @@ export interface ISearch {
 
 export interface IMovieAPIRes {
   Search: Search[];
-  totalResults: string;
-  Response: string;
+  totalResults?: string;
+  Response?: string;
 }
 
 export interface IPageNumber {

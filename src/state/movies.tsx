@@ -1,9 +1,9 @@
 import { atom } from 'recoil';
-import { IMovieAPIRes } from 'types/movie';
+import { IMovieAPIRes, ISearch } from 'types/movie';
 
-export const searchedMovieState = atom<IMovieAPIRes>({
+export const searchedMovieState = atom<ISearch[]>({
   key: '#searchedMovie',
-  default: {} as IMovieAPIRes,
+  default: [],
 });
 
 export const pageNumberState = atom({

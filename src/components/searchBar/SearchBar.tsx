@@ -1,24 +1,16 @@
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { useState, useEffect } from 'hooks';
 import { BsSearch } from 'react-icons/bs';
-
 import styles from './searchBar.module.scss';
 import { getMovieApi } from 'services/movie';
-import { IMovieAPIRes, ISearch } from 'types/movie.d';
 import { searchedMovieState, pageNumberState } from 'state/movies';
 import useDebounce from 'hooks/useDebounce';
 
 const SearchBar = () => {
-  const [, setSearchedMovieList] = useRecoilState<IMovieAPIRes>(searchedMovieState);
-  const [pageNumber, setPageNumber] = useRecoilState(pageNumberState);
+  const [, setSearchedMovieList] = useRecoilState(searchedMovieState);
+  const pageNumber = useRecoilValue(pageNumberState);
   const [searchKeyword, setSearchKeyword] = useState('');
-  const [movieList, setMovieList] = useState([]);
-
   const debouncedSearch = useDebounce(searchKeyword, 500);
-
-  useEffect(() => {
-    setMovieList([]);
-  }, [searchKeyword]);
 
   useEffect(() => {
     if (debouncedSearch) {
@@ -29,7 +21,10 @@ const SearchBar = () => {
         .then((res) => {
           console.log(res.data);
           if (res.data.Response === 'True') {
-            setSearchedMovieList(res.data);
+            setSearchedMovieList(res.data.Search);
+            if (pageNumber > 1) {
+              res.data.Search.map((el) => setSearchedMovieList((prev: any) => [...prev, el]));
+            }
           }
         })
         .catch((error) => console.error(error));

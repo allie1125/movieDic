@@ -1,12 +1,12 @@
 // import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil'
 
-import styles from './TodoList.module.scss'
-import TodoItem from './Item'
-import { useRecoil } from 'hooks/state'
-import { todoListState } from 'states/todo'
+import styles from './TodoList.module.scss';
+import TodoItem from './Item';
+import { useRecoil } from 'hooks/state';
+import { todoListState } from 'states/todo';
 
 const TodoList = () => {
-  const [todoList] = useRecoil(todoListState)
+  const [todoList] = useRecoil(todoListState);
 
   // const todoList111 = useRecoilValue(todoListState)
   // const setTodoList111 = useSetRecoilState(todoListState)
@@ -18,7 +18,7 @@ const TodoList = () => {
 
   const handleAddClick = () => {
     // console.log('handleAddClick')
-  }
+  };
 
   return (
     <div className={styles.todoList}>
@@ -33,7 +33,7 @@ const TodoList = () => {
         <button type='button' className={styles.addButton} onClick={handleAddClick} aria-label='Add button' />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TodoList
+export default TodoList;
