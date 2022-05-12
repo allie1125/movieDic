@@ -19,10 +19,10 @@ const SearchBar = () => {
         page: pageNumber,
       })
         .then((res) => {
-          console.log(res.data);
           if (res.data.Response === 'True') {
-            setSearchedMovieList(res.data.Search);
-            if (pageNumber > 1) {
+            if (pageNumber === 0) {
+              setSearchedMovieList(res.data.Search);
+            } else {
               res.data.Search.map((el) => setSearchedMovieList((prev: any) => [...prev, el]));
             }
           }

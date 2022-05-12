@@ -11,10 +11,13 @@ import useInfiniteScroll from 'hooks/useInfiniteScroll';
 
 const MovieDic = () => {
   const movies = useRecoilValue(searchedMovieState);
-  console.log('moviedic page - movies?', movies);
   const [, setPageNumber] = useRecoilState(pageNumberState);
   const ref = useRef(null);
   const isBottomVisible = useInfiniteScroll(ref, { threshold: 0 }, false);
+
+  useEffect(() => {
+    console.log('movies?', movies);
+  }, [movies]);
 
   useEffect(() => {
     isBottomVisible && setPageNumber((prevCount) => prevCount + 1);
@@ -23,8 +26,8 @@ const MovieDic = () => {
     <div>
       <SearchBar />
       <div className={styles.cardWrapper}>
-        {movies.map((movie) => (
-          <MovieCard movie={movie} key={`movie-$${movie.imdbID}`} />
+        {movies.map((movie, i) => (
+          <MovieCard movie={movie} key={`movie-${i}${movie.imdbID}`} />
         ))}
         <div ref={ref} className={styles.observerDiv} />
       </div>
