@@ -1,4 +1,4 @@
-interface Search {
+export interface ISearch {
   Title: string;
   Year: string;
   imdbID: string;

@@ -3,43 +3,50 @@
 
 .searchWrapper {
   position: fixed;
-  top: 0;
-  display: inline;
-  width: 80%;
-  max-width: 1080px;
-  padding: 1.2vh 0;
-  margin-top: 5vh;
-  background-color: #2b2b38;
-  border-radius: 30px;
+  top: 5rem;
+  width: 100%;
+  height: 5rem;
+  padding: 0 10%;
+  background-color: colors.$BG;
 
-  > div,
-  form {
-    display: inline-block;
-  }
-
-  > div {
-    width: 57px;
-    margin: 0 1.5vh;
-    vertical-align: middle;
+  .searchBar {
+    position: fixed;
+    top: 6rem;
+    display: flex;
+    width: 80%;
+    padding: 1.2vh 0%;
     background-color: #2b2b38;
-    border-radius: 35px;
+    border-radius: 30px;
 
-    svg {
-      width: 100%;
-      height: 2rem;
-      padding: 0 2vh;
-      color: colors.$INACTIVE_TEXT;
+    > div,
+    form {
+      display: inline-block;
     }
-  }
 
-  form {
-    input {
-      font-size: 1.2rem;
-      color: colors.$ACTIVE_TEXT;
-      letter-spacing: 0.5px;
+    > div {
+      width: 57px;
+      margin: 0 1.5vh;
+      vertical-align: middle;
+      background-color: #2b2b38;
+      border-radius: 35px;
 
-      ::placeholder {
-        color: colors.$PLACEHOLDER_TEXT;
+      svg {
+        width: 100%;
+        height: 2rem;
+        padding: 0 2vh;
+        color: colors.$INACTIVE_TEXT;
+      }
+    }
+
+    form {
+      input {
+        font-size: 1.2rem;
+        color: colors.$ACTIVE_TEXT;
+        letter-spacing: 0.5px;
+
+        ::placeholder {
+          color: colors.$PLACEHOLDER_TEXT;
+        }
       }
     }
   }

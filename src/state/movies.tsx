@@ -8,5 +8,5 @@ export const searchedMovieState = atom<IMovieAPIRes>({
 
 export const pageNumberState = atom({
   key: '#page',
-  default: 1,
+  default: 0,
 });

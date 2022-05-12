@@ -4,6 +4,8 @@ import styles from './MovieDic.module.scss';
 import { useMount, useState } from 'hooks';
 
 import MovieCard from 'components/movieCard/MovieCard';
+import SearchBar from 'components/searchBar/SearchBar';
+
 import { useRecoilValue } from 'recoil';
 import { searchedMovieState } from 'state/movies';
 
@@ -24,7 +26,12 @@ const MovieDic = () => {
   // if (!movie) return null;
   // console.log(movie);
 
-  return <MovieCard />;
+  return (
+    <div>
+      <SearchBar />
+      <MovieCard />
+    </div>
+  );
 };
 
 export default MovieDic;
