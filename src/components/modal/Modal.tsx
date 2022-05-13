@@ -1,12 +1,10 @@
-import styles from './modal.module.scss';
 import { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
+
+import styles from './modal.module.scss';
 import { bookmarkedMoviesState, modalState, searchedMovieState } from 'state/movies';
-import { ISearch } from 'types/movie';
 
 interface Props {
-  // openModal: boolean;
-  // setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
   selectedMovie: any;
 }
 

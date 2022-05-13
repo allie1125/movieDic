@@ -1,12 +1,13 @@
-import styles from './movieCard.module.scss';
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { ISearch } from 'types/movie';
-import { searchedMovieState, bookmarkedMoviesState, modalState, pageNumberState } from 'state/movies';
+import styles from './movieCard.module.scss';
 import Portal from 'components/portal/Portal';
 import Modal from 'components/modal/Modal';
+import { ISearch } from 'types/movie';
+import { searchedMovieState, bookmarkedMoviesState, modalState, pageNumberState } from 'state/movies';
+
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
 
 const MovieCard = () => {

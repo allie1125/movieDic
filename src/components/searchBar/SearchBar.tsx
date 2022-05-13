@@ -1,9 +1,11 @@
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { useState, useEffect } from 'hooks';
+import { useRecoilState } from 'recoil';
 import { BsSearch } from 'react-icons/bs';
+
 import styles from './searchBar.module.scss';
 import { getMovieApi } from 'services/movie';
 import { searchedMovieState, pageNumberState } from 'state/movies';
+
+import { useState, useEffect } from 'hooks';
 import useDebounce from 'hooks/useDebounce';
 
 const SearchBar = () => {
