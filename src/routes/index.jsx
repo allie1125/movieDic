@@ -1,9 +1,9 @@
-import styles from './Routes.module.scss';
-import MovieDic from './MovieDic';
-import BookMark from './BookMark';
-import { Routes, Route } from 'react-router-dom';
+import styles from "./Routes.module.scss";
+import MovieDic from "./MovieDic";
+import BookMark from "./BookMark";
+import { Routes, Route } from "react-router-dom";
 
-import Layout from 'components/layout/Layout';
+import Layout from "components/layout/Layout";
 
 const App = () => {
   return (

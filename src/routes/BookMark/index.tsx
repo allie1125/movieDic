@@ -1,4 +1,4 @@
-import MovieCard from 'components/movieCard/MovieCard';
+import MovieCard from "components/movieCard/MovieCard";
 
 const Bookmark = () => {
   return <MovieCard />;

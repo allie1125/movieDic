@@ -1,17 +1,17 @@
-import { useRecoilState } from 'recoil';
-import { BsSearch } from 'react-icons/bs';
+import { useRecoilState } from "recoil";
+import { BsSearch } from "react-icons/bs";
 
-import styles from './searchBar.module.scss';
-import { getMovieApi } from 'services/movie';
-import { searchedMovieState, pageNumberState } from 'state/movies';
+import styles from "./searchBar.module.scss";
+import { getMovieApi } from "services/movie";
+import { searchedMovieState, pageNumberState } from "state/movies";
 
-import { useState, useEffect } from 'hooks';
-import useDebounce from 'hooks/useDebounce';
+import { useState, useEffect } from "hooks";
+import useDebounce from "hooks/useDebounce";
 
 const SearchBar = () => {
   const [, setSearchedMovieList] = useRecoilState(searchedMovieState);
   const [pageNumber, setPageNumber] = useRecoilState(pageNumberState);
-  const [searchKeyword, setSearchKeyword] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState("");
   const debouncedSearch = useDebounce(searchKeyword, 500);
 
   useEffect(() => {
@@ -20,23 +20,17 @@ const SearchBar = () => {
   }, [searchKeyword]);
 
   useEffect(() => {
-    console.log('pageNumber?', pageNumber);
-  }, [pageNumber]);
-
-  useEffect(() => {
-    console.log('debounced');
     if (debouncedSearch) {
       getMovieApi({
         s: searchKeyword,
         page: pageNumber,
       })
         .then((res) => {
-          if (res?.data?.Response === 'True') {
+          if (res?.data?.Response === "True") {
             if (pageNumber === 0) {
               setSearchedMovieList(res.data.Search);
             } else {
               res?.data?.Search?.map((el) => setSearchedMovieList((prev: any) => [...prev, el]));
-              // setSearchedMovieList((prev) => [...prev, ...res?.data?.Search]);
             }
           }
         })

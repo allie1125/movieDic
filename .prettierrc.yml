@@ -2,6 +2,6 @@ jsxSingleQuote: true
 semi: true
 printWidth: 120
 proseWrap: never
-singleQuote: true
+singleQuote: false
 htmlWhitespaceSensitivity: 'css'
 endOfLine: 'lf'

@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router-dom';
-import { BsSearch, BsBookmarkStar } from 'react-icons/bs';
+import { NavLink } from "react-router-dom";
+import { BsSearch, BsBookmarkStar } from "react-icons/bs";
 
-import styles from './bottomTab.module.scss';
+import styles from "./bottomTab.module.scss";
 
 const BottomTab = () => {
   return (

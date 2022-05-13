@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, MutableRefObject } from 'react';
+import { useState, useRef, useEffect, MutableRefObject } from "react";
 
 const useInfiniteScroll = (ref: MutableRefObject<Element | null>, options: any = {}, forward: boolean = true) => {
   const [element, setElement] = useState<Element | null>(null);

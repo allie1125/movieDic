@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useState, useEffect } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 
-import styles from './modal.module.scss';
-import { bookmarkedMoviesState, modalState, searchedMovieState } from 'state/movies';
+import styles from "./modal.module.scss";
+import { bookmarkedMoviesState, modalState, searchedMovieState } from "state/movies";
 
 interface Props {
   selectedMovie: any;
@@ -23,10 +23,6 @@ const Modal = ({ selectedMovie }: Props) => {
     setBookmarkedMovies((prev: any) => [...prev, bookmarkedMovie]);
     setOpenModal((prev) => !prev);
   };
-
-  useEffect(() => {
-    console.log('bookmarkedMovies?', bookmarkedMovies);
-  }, [bookmarkedMovies]);
 
   return (
     <div className={styles.backGround}>

@@ -1,17 +1,7 @@
-import { useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
-
-import MovieCard from 'components/movieCard/MovieCard';
-import SearchBar from 'components/searchBar/SearchBar';
-import { searchedMovieState } from 'state/movies';
+import MovieCard from "components/movieCard/MovieCard";
+import SearchBar from "components/searchBar/SearchBar";
 
 const MovieDic = () => {
-  const movies = useRecoilValue(searchedMovieState);
-
-  useEffect(() => {
-    console.log('movies?', movies);
-  }, [movies]);
-
   return (
     <div>
       <SearchBar />

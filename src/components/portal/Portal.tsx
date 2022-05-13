@@ -1,4 +1,4 @@
-import { createPortal } from 'react-dom';
+import { createPortal } from "react-dom";
 
 interface Props {
   openModal: boolean;
@@ -8,7 +8,7 @@ interface Props {
 const Portal = ({ openModal, children }: Props) => {
   if (!openModal) return null;
 
-  return createPortal(<div style={{ display: 'flex', justifyContent: 'center' }}>{children}</div>, document.body);
+  return createPortal(<div style={{ display: "flex", justifyContent: "center" }}>{children}</div>, document.body);
 };
 
 export default Portal;

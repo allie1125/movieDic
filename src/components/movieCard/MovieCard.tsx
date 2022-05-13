@@ -1,14 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
 
-import styles from './movieCard.module.scss';
-import Portal from 'components/portal/Portal';
-import Modal from 'components/modal/Modal';
-import { ISearch } from 'types/movie';
-import { searchedMovieState, bookmarkedMoviesState, modalState, pageNumberState } from 'state/movies';
+import styles from "./movieCard.module.scss";
+import Portal from "components/portal/Portal";
+import Modal from "components/modal/Modal";
+import { ISearch } from "types/movie";
+import { searchedMovieState, bookmarkedMoviesState, modalState, pageNumberState } from "state/movies";
 
-import useInfiniteScroll from 'hooks/useInfiniteScroll';
+import useInfiniteScroll from "hooks/useInfiniteScroll";
 
 const MovieCard = () => {
   const ref = useRef(null);
@@ -31,12 +31,12 @@ const MovieCard = () => {
 
   return (
     <div className={styles.cardWrapper}>
-      {pathname === '/' ? (
+      {pathname === "/" ? (
         <>
           {movies.map((el, i) => (
             <button key={el.imdbID} type='button' className={styles.movieCard} onClick={() => handleClickMovieCard(el)}>
               <div className={styles.posterWrapper}>
-                {el.Poster === 'N/A' ? <span>NO IMAGE</span> : <img src={el.Poster} alt='Poster image' />}
+                {el.Poster === "N/A" ? <span>NO IMAGE</span> : <img src={el.Poster} alt='Poster image' />}
               </div>
               <div className={styles.textWrapper}>
                 <ul>
@@ -56,7 +56,7 @@ const MovieCard = () => {
           {bookmarkedMovies.map((el, i) => (
             <button key={el.imdbID} type='button' className={styles.movieCard} onClick={() => handleClickMovieCard(el)}>
               <div className={styles.posterWrapper}>
-                {el.Poster === 'N/A' ? <span>NO IMAGE</span> : <img src={el.Poster} alt='Poster image' />}
+                {el.Poster === "N/A" ? <span>NO IMAGE</span> : <img src={el.Poster} alt='Poster image' />}
               </div>
               <div className={styles.textWrapper}>
                 <ul>
