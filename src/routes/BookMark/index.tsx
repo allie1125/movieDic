@@ -1,7 +1,15 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
-const bookMark = () => {
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { bookmarkedMoviesState, modalState } from 'state/movies';
+
+const Bookmark = () => {
+  const [bookmarkedMovies, setBookmarkedMovies] = useRecoilState(bookmarkedMoviesState);
+
+  useEffect(() => {
+    console.log('bookmark - bookmarkedMovies?', bookmarkedMovies);
+  }, [bookmarkedMovies]);
   return <div>sdf</div>;
 };
 
-export default bookMark;
+export default Bookmark;

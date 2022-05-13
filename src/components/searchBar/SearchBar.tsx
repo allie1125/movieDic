@@ -34,6 +34,7 @@ const SearchBar = () => {
               setSearchedMovieList(res.data.Search);
             } else {
               res?.data?.Search?.map((el) => setSearchedMovieList((prev: any) => [...prev, el]));
+              // setSearchedMovieList((prev) => [...prev, ...res?.data?.Search]);
             }
           }
         })

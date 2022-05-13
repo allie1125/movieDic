@@ -1,7 +1,7 @@
 // import dayjs from 'dayjs'
 import styles from './MovieDic.module.scss';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import MovieCard from 'components/movieCard/MovieCard';
 import SearchBar from 'components/searchBar/SearchBar';
@@ -22,6 +22,7 @@ const MovieDic = () => {
   useEffect(() => {
     isBottomVisible && setPageNumber((prevCount) => prevCount + 1);
   }, [isBottomVisible]);
+
   return (
     <div>
       <SearchBar />
