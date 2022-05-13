@@ -18,16 +18,4 @@
     letter-spacing: 0.5px;
     background-color: colors.$BG;
   }
-
-  main {
-    // display: contents;
-    // width: 100%;
-
-    > div {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 100%;
-    }
-  }
 }
