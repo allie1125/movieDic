@@ -54,7 +54,7 @@ const SearchBar = () => {
           <BsSearch className={styles.reactIcons} />
         </div>
         <form onSubmit={submitForm}>
-          <input type='search' value={searchKeyword} onChange={handleSearchInput} placeholder='영화이름 검색' />
+          <input type='type' value={searchKeyword} onChange={handleSearchInput} placeholder='영화이름 검색' />
         </form>
       </div>
     </div>

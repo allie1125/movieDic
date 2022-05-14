@@ -15,24 +15,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10%;
+    justify-content: center;
+    width: fit-content;
+    padding: 2%;
     color: colors.$ACTIVE_TEXT;
     background: colors.$INACTIVE_TEXT;
     border-radius: 1rem;
 
     > div {
-      // display: flex;
-      // flex-direction: column;
-      // align-items: center;
+      .noImageWrapper {
+        width: 100%;
+        height: 100%;
+
+        svg {
+          width: inherit;
+          height: inherit;
+          color: rgba(43, 43, 56);
+        }
+      }
 
       img {
+        display: flex;
+        width: 60%;
+        height: 60%;
+        margin: 1rem auto;
         object-fit: contain;
       }
 
-      > span {
+      .titleYear {
+        line-height: 2;
+      }
+
+      span {
         display: block;
         padding: 2% 0;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         text-align: center;
         letter-spacing: 0.5px;
       }
@@ -46,9 +63,17 @@
       font-size: 2rem;
 
       > button {
-        padding: 1rem 2rem;
-        border: 1px solid white;
+        padding: 0.6rem 1.5rem;
+        margin: 0 1em;
+        font-size: 1.2rem;
+        color: colors.$ACTIVE_TEXT;
+        border: 2px solid white;
         border-radius: 2rem;
+
+        &:hover {
+          color: colors.$INACTIVE_TEXT;
+          background-color: colors.$ACTIVE_TEXT;
+        }
       }
     }
   }

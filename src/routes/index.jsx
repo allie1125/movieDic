@@ -1,4 +1,4 @@
-import styles from "./Routes.module.scss";
+import styles from "./routes.module.scss";
 import MovieDic from "./MovieDic";
 import BookMark from "./BookMark";
 import { Routes, Route } from "react-router-dom";

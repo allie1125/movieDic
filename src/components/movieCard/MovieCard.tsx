@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
+import { MdLocalMovies } from "react-icons/md";
 
 import styles from "./movieCard.module.scss";
 import Portal from "components/portal/Portal";
@@ -55,7 +56,13 @@ const MovieCard = () => {
           {movies.map((el, i) => (
             <button key={el.imdbID} type='button' className={styles.movieCard} onClick={() => handleClickMovieCard(el)}>
               <div className={styles.posterWrapper}>
-                {el.Poster === "N/A" ? <span>NO IMAGE</span> : <img src={el.Poster} alt='Poster image' />}
+                {el.Poster === "N/A" ? (
+                  <div className={styles.noImageWrapper}>
+                    <MdLocalMovies />
+                  </div>
+                ) : (
+                  <img src={el.Poster} alt='Poster image' />
+                )}
               </div>
               <div className={styles.textWrapper}>
                 {bookmarkedMovies.map(
@@ -83,7 +90,13 @@ const MovieCard = () => {
           {bookmarkedMovies.map((el, i) => (
             <button key={el.imdbID} type='button' className={styles.movieCard} onClick={() => handleClickMovieCard(el)}>
               <div className={styles.posterWrapper}>
-                {el.Poster === "N/A" ? <span>NO IMAGE</span> : <img src={el.Poster} alt='Poster image' />}
+                {el.Poster === "N/A" ? (
+                  <div className={styles.noImageWrapper}>
+                    <MdLocalMovies />
+                  </div>
+                ) : (
+                  <img src={el.Poster} alt='Poster image' />
+                )}
               </div>
               <div className={styles.textWrapper}>
                 <div className={styles.heart} />

@@ -5,12 +5,14 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  min-width: inherit;
 
   header {
     position: fixed;
     top: 0;
     z-index: 9;
     width: 100%;
+    min-width: inherit;
     padding: 2rem 0;
     font-size: 2rem;
     font-weight: bold;
@@ -18,5 +20,13 @@
     text-align: center;
     letter-spacing: 0.5px;
     background-color: colors.$BG;
+  }
+
+  main {
+    min-width: inherit;
+
+    > div {
+      min-width: inherit;
+    }
   }
 }

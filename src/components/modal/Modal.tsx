@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
+import { MdLocalMovies } from "react-icons/md";
 
 import styles from "./modal.module.scss";
 import { bookmarkedMoviesState, modalState, searchedMovieState } from "state/movies";
@@ -40,8 +41,15 @@ const Modal = ({ selectedMovie, isAlreadyBookmarked }: Props) => {
       {openModal && (
         <div className={styles.content}>
           <div>
-            <img src={selectedMovie.Poster} alt={`Movie Poster of ${selectedMovie.Title}`} />
-            <span>
+            {selectedMovie.Poster === "N/A" ? (
+              <div className={styles.noImageWrapper}>
+                <MdLocalMovies />
+              </div>
+            ) : (
+              <img src={selectedMovie.Poster} alt={`Movie Poster of ${selectedMovie.Title}`} />
+            )}
+
+            <span className={styles.titleYear}>
               {selectedMovie.Title}({selectedMovie.Year})
             </span>
             <span>즐겨찾기에{isAlreadyBookmarked ? "서 제거" : " 추가"} 하시겠습니까?</span>
