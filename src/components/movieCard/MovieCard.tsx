@@ -9,43 +9,23 @@ import { ISearch } from "types/movie";
 import { searchedMovieState, bookmarkedMoviesState, modalState, pageNumberState } from "state/movies";
 
 import useInfiniteScroll from "hooks/useInfiniteScroll";
-import { getLocalStorageData } from "hooks/useLocalStorage";
+import { getLocalStorageData, updateLocalStorageData } from "../../hooks/useLocalStorage";
 
 const MovieCard = () => {
-  const INIT_BOOKMARK = [
-    {
-      data: {
-        bookMarks: [
-          {
-            id: "tt0120744",
-            isBookmarked: true,
-          },
-          {
-            id: "tt10633456",
-            isBookmarked: false,
-          },
-        ],
-      },
-    },
-  ];
   const EMPTY_RESULT_TEXT = "검색결과가 없습니다.";
   const ref = useRef(null);
   const { pathname } = useLocation();
   const [openModal, setOpenModal] = useRecoilState(modalState);
   const [, setPageNumber] = useRecoilState(pageNumberState);
   const movies = useRecoilValue(searchedMovieState);
-  const bookmarkedMovies = useRecoilValue(bookmarkedMoviesState);
+  const [bookmarkedMovies, setBookmarkedMovies] = useRecoilState(bookmarkedMoviesState);
   const [selectedMovie, setSelectedMovie] = useState<ISearch>();
   const [isAlreadyBookmarked, setIsAlreadyBookmarked] = useState(false);
   const isBottomVisible = useInfiniteScroll(ref, { threshold: 0 }, false);
 
   useEffect(() => {
-    window.localStorage.setItem("movieDic", JSON.stringify(INIT_BOOKMARK));
+    setBookmarkedMovies(getLocalStorageData());
   }, []);
-
-  useEffect(() => {
-    console.log(bookmarkedMovies);
-  }, [bookmarkedMovies]);
 
   const handleClickMovieCard = (movie: ISearch) => {
     bookmarkedMovies?.find((el) => {

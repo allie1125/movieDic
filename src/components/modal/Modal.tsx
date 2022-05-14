@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import styles from "./modal.module.scss";
 import { bookmarkedMoviesState, modalState, searchedMovieState } from "state/movies";
+import { updateLocalStorageData } from "../../hooks/useLocalStorage";
+import { ISearch } from "types/movie";
 
 interface Props {
   selectedMovie: any;
@@ -11,7 +13,6 @@ interface Props {
 
 const Modal = ({ selectedMovie, isAlreadyBookmarked }: Props) => {
   const modal = useRecoilValue(modalState);
-  const movies = useRecoilValue(searchedMovieState);
   const [bookmarkedMovies, setBookmarkedMovies] = useRecoilState(bookmarkedMoviesState);
   const [openModal, setOpenModal] = useState(modal);
 
@@ -23,9 +24,14 @@ const Modal = ({ selectedMovie, isAlreadyBookmarked }: Props) => {
     if (isAlreadyBookmarked) {
       const newList = bookmarkedMovies.filter((el) => el.imdbID !== selectedMovie.imdbID);
       setBookmarkedMovies(newList);
+      updateLocalStorageData(newList);
     } else {
-      setBookmarkedMovies((prev: any) => [...prev, selectedMovie]);
+      setBookmarkedMovies((prev: ISearch[]) => {
+        updateLocalStorageData([...prev, selectedMovie]);
+        return [...prev, selectedMovie];
+      });
     }
+
     setOpenModal((prev) => !prev);
   };
 
