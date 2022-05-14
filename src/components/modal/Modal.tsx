@@ -38,7 +38,7 @@ const Modal = ({ selectedMovie, isAlreadyBookmarked }: Props) => {
             <span>
               {selectedMovie.Title}({selectedMovie.Year})
             </span>
-            <span>즐겨찾기에{isAlreadyBookmarked ? "서 제거" : "추가"}하시겠습니까?</span>
+            <span>즐겨찾기에{isAlreadyBookmarked ? "서 제거" : " 추가"} 하시겠습니까?</span>
           </div>
           <ul>
             <li>

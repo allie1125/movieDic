@@ -35,7 +35,7 @@ const MovieCard = () => {
   const [, setPageNumber] = useRecoilState(pageNumberState);
   const movies = useRecoilValue(searchedMovieState);
   const bookmarkedMovies = useRecoilValue(bookmarkedMoviesState);
-  const [selectedMovie, setSelectedMovie] = useState<ISearch | null>(null);
+  const [selectedMovie, setSelectedMovie] = useState<ISearch>();
   const [isAlreadyBookmarked, setIsAlreadyBookmarked] = useState(false);
   const isBottomVisible = useInfiniteScroll(ref, { threshold: 0 }, false);
 
@@ -48,15 +48,19 @@ const MovieCard = () => {
   }, [bookmarkedMovies]);
 
   const handleClickMovieCard = (movie: ISearch) => {
-    setSelectedMovie(movie);
-    checkAlreadyBookmarked(movie);
-    setOpenModal((prev) => !prev);
-  };
+    bookmarkedMovies?.find((el) => {
+      let isBookmarked = false;
+      if (el.imdbID === movie.imdbID) {
+        isBookmarked = true;
+        setIsAlreadyBookmarked(true);
+        return isBookmarked;
+      }
+      setIsAlreadyBookmarked(false);
+      return isBookmarked;
+    });
 
-  const checkAlreadyBookmarked = (movie: ISearch) => {
-    bookmarkedMovies.find((el) =>
-      el.imdbID === movie.imdbID ? setIsAlreadyBookmarked(true) : setIsAlreadyBookmarked(false)
-    );
+    setSelectedMovie(movie);
+    setOpenModal((prev) => !prev);
   };
 
   useEffect(() => {
@@ -75,7 +79,10 @@ const MovieCard = () => {
               </div>
               <div className={styles.textWrapper}>
                 {bookmarkedMovies.map(
-                  (bookmarkedMovie) => bookmarkedMovie.imdbID === el.imdbID && <div className={styles.heart} />
+                  (bookmarkedMovie) =>
+                    bookmarkedMovie.imdbID === el.imdbID && (
+                      <div key={`bookmark${i}-${el.imdbID}`} className={styles.heart} />
+                    )
                 )}
                 <ul>
                   <li>
