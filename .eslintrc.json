@@ -3,9 +3,8 @@
   "env": {
     "browser": true,
     "jasmine": true,
-    "jest": true
-    // ,
-    // "node": true
+    "jest": true,
+    "node": true
   },
   "settings": {
     "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
