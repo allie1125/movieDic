@@ -3,10 +3,11 @@ import { BsSearch } from "react-icons/bs";
 
 import styles from "./searchBar.module.scss";
 import { getMovieApi } from "services/movie";
-import { searchedMovieState, pageNumberState } from "state/movies";
+import { searchedMovieState, pageNumberState } from "states/movies";
 
 import { useState, useEffect } from "hooks";
 import useDebounce from "hooks/useDebounce";
+import { ISearch } from "types/movie";
 
 const SearchBar = () => {
   const [, setSearchedMovieList] = useRecoilState(searchedMovieState);
@@ -30,7 +31,7 @@ const SearchBar = () => {
             if (pageNumber === 0) {
               setSearchedMovieList(res.data.Search);
             } else {
-              res?.data?.Search?.map((el) => setSearchedMovieList((prev: any) => [...prev, el]));
+              res?.data?.Search?.map((el) => setSearchedMovieList((prev: ISearch[]) => [...prev, el]));
             }
           }
         })

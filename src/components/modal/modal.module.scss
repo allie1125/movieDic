@@ -9,7 +9,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(128, 128, 128, 10%);
+  // background-color: rgba(128, 128, 128, 10%);
 
   .content {
     display: flex;
@@ -51,7 +51,7 @@
         padding: 2% 0;
         font-size: 1.2rem;
         text-align: center;
-        letter-spacing: 0.5px;
+        letter-spacing: -0.5px;
       }
     }
 

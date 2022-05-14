@@ -7,7 +7,7 @@ import styles from "./movieCard.module.scss";
 import Portal from "components/portal/Portal";
 import Modal from "components/modal/Modal";
 import { ISearch } from "types/movie";
-import { searchedMovieState, bookmarkedMoviesState, modalState, pageNumberState } from "state/movies";
+import { searchedMovieState, bookmarkedMoviesState, modalState, pageNumberState } from "states/movies";
 
 import useInfiniteScroll from "hooks/useInfiniteScroll";
 import { getLocalStorageData, updateLocalStorageData } from "../../hooks/useLocalStorage";
@@ -79,7 +79,9 @@ const MovieCard = () => {
                 </ul>
               </div>
               <Portal openModal={openModal}>
-                {openModal && <Modal selectedMovie={selectedMovie} isAlreadyBookmarked={isAlreadyBookmarked} />}
+                {openModal && selectedMovie && (
+                  <Modal selectedMovie={selectedMovie} isAlreadyBookmarked={isAlreadyBookmarked} />
+                )}
               </Portal>
             </button>
           ))}
@@ -108,7 +110,9 @@ const MovieCard = () => {
                 </ul>
               </div>
               <Portal openModal={openModal}>
-                {openModal && <Modal selectedMovie={selectedMovie} isAlreadyBookmarked={isAlreadyBookmarked} />}
+                {openModal && selectedMovie && (
+                  <Modal selectedMovie={selectedMovie} isAlreadyBookmarked={isAlreadyBookmarked} />
+                )}
               </Portal>
             </button>
           ))}

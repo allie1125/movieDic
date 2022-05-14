@@ -3,12 +3,12 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { MdLocalMovies } from "react-icons/md";
 
 import styles from "./modal.module.scss";
-import { bookmarkedMoviesState, modalState, searchedMovieState } from "state/movies";
+import { bookmarkedMoviesState, modalState } from "states/movies";
 import { updateLocalStorageData } from "../../hooks/useLocalStorage";
 import { ISearch } from "types/movie";
 
 interface Props {
-  selectedMovie: any;
+  selectedMovie: ISearch;
   isAlreadyBookmarked: boolean;
 }
 
