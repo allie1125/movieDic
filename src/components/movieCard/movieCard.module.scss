@@ -27,9 +27,15 @@
     height: 15rem;
     padding: 2% 2% 2% 0;
     margin: 5% 0;
-    text-align: center;
+    text-align: left;
     background-color: #2b2b38;
     border-radius: 10px;
+    transition: 0.25s;
+
+    &:hover {
+      box-shadow: 0 1em 1em -1em colors.$INACTIVE_TEXT;
+      transform: translateY(-0.25em);
+    }
 
     .posterWrapper {
       flex: 2.5;
@@ -58,7 +64,7 @@
     .textWrapper {
       flex: 1.5;
       padding: 0 5%;
-      font-size: 1em;
+      font-size: 1rem;
       color: colors.$ACTIVE_TEXT;
 
       .heart {

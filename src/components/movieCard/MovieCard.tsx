@@ -10,7 +10,7 @@ import { ISearch } from "types/movie";
 import { searchedMovieState, bookmarkedMoviesState, modalState, pageNumberState } from "states/movies";
 
 import useInfiniteScroll from "hooks/useInfiniteScroll";
-import { getLocalStorageData, updateLocalStorageData } from "../../hooks/useLocalStorage";
+import { getLocalStorageData } from "../../hooks/useLocalStorage";
 
 const MovieCard = () => {
   const EMPTY_RESULT_TEXT = "검색결과가 없습니다.";
@@ -28,6 +28,10 @@ const MovieCard = () => {
     setBookmarkedMovies(getLocalStorageData());
   }, []);
 
+  useEffect(() => {
+    isBottomVisible && setPageNumber((prevCount) => prevCount + 1);
+  }, [isBottomVisible]);
+
   const handleClickMovieCard = (movie: ISearch) => {
     bookmarkedMovies?.find((el) => {
       let isBookmarked = false;
@@ -43,10 +47,6 @@ const MovieCard = () => {
     setSelectedMovie(movie);
     setOpenModal((prev) => !prev);
   };
-
-  useEffect(() => {
-    isBottomVisible && setPageNumber((prevCount) => prevCount + 1);
-  }, [isBottomVisible]);
 
   return (
     <div className={styles.cardWrapper}>
@@ -75,7 +75,7 @@ const MovieCard = () => {
                   <li>
                     {el.Title} ({el.Year})
                   </li>
-                  <li>장르 - {el.Type}</li>
+                  <li>{el.Type}</li>
                 </ul>
               </div>
               <Portal openModal={openModal}>
@@ -106,7 +106,7 @@ const MovieCard = () => {
                   <li>
                     {el.Title} ({el.Year})
                   </li>
-                  <li>장르 - {el.Type}</li>
+                  <li>{el.Type}</li>
                 </ul>
               </div>
               <Portal openModal={openModal}>
