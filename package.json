@@ -2,7 +2,7 @@
   "name": "movieDic",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://allie1125.github.io/movieDic/",
+  "homepage" : "http://allie1125.github.io/movieDic",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
