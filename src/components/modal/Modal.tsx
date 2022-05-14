@@ -6,9 +6,10 @@ import { bookmarkedMoviesState, modalState, searchedMovieState } from "state/mov
 
 interface Props {
   selectedMovie: any;
+  isAlreadyBookmarked: boolean;
 }
 
-const Modal = ({ selectedMovie }: Props) => {
+const Modal = ({ selectedMovie, isAlreadyBookmarked }: Props) => {
   const modal = useRecoilValue(modalState);
   const movies = useRecoilValue(searchedMovieState);
   const [bookmarkedMovies, setBookmarkedMovies] = useRecoilState(bookmarkedMoviesState);
@@ -19,8 +20,12 @@ const Modal = ({ selectedMovie }: Props) => {
   };
 
   const handleBookmarkMovie = () => {
-    const bookmarkedMovie = movies.find((movie) => movie.imdbID === selectedMovie.imdbID && movie);
-    setBookmarkedMovies((prev: any) => [...prev, bookmarkedMovie]);
+    if (isAlreadyBookmarked) {
+      const newList = bookmarkedMovies.filter((el) => el.imdbID !== selectedMovie.imdbID);
+      setBookmarkedMovies(newList);
+    } else {
+      setBookmarkedMovies((prev: any) => [...prev, selectedMovie]);
+    }
     setOpenModal((prev) => !prev);
   };
 
@@ -33,15 +38,15 @@ const Modal = ({ selectedMovie }: Props) => {
             <span>
               {selectedMovie.Title}({selectedMovie.Year})
             </span>
+            <span>즐겨찾기에{isAlreadyBookmarked ? "서 제거" : "추가"}하시겠습니까?</span>
           </div>
-          <span>즐겨찾기에 추가 하시겠습니까?</span>
           <ul>
             <li>
-              <button type='button' onClick={handleBookmarkMovie}>
-                확인
-              </button>
               <button type='button' onClick={handleCloseModal}>
                 취소
+              </button>
+              <button type='button' onClick={handleBookmarkMovie}>
+                확인
               </button>
             </li>
           </ul>

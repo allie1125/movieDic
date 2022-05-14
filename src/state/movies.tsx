@@ -1,22 +1,22 @@
-import { atom } from 'recoil';
-import { ISearch } from 'types/movie';
+import { atom } from "recoil";
+import { ISearch } from "types/movie";
 
 export const searchedMovieState = atom<ISearch[]>({
-  key: '#searchedMovie',
+  key: "#searchedMovie",
   default: [],
 });
 
 export const pageNumberState = atom({
-  key: '#page',
+  key: "#page",
   default: 0,
 });
 
 export const bookmarkedMoviesState = atom<ISearch[]>({
-  key: '#bookmarkedMovie',
+  key: "#bookmarkedMovie",
   default: [],
 });
 
 export const modalState = atom({
-  key: '#modal',
+  key: "#modal",
   default: false,
 });
