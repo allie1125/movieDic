@@ -11,9 +11,9 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<MovieDic />} />
-          <Route path='bookMark' element={<BookMark />} />
+          <Route path='/bookMark' element={<BookMark />} />
+          <Route path='*' element={<div>404 T_T</div>} />
         </Route>
-        <Route path='*' element={<div>404</div>} />
       </Routes>
     </div>
   );
