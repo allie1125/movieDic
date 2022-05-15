@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     <RecoilRoot>
       <div id='portal' />
-      <BrowserRouter>
+      <BrowserRouter basename='/movieDic'>
         <Routes />
       </BrowserRouter>
     </RecoilRoot>

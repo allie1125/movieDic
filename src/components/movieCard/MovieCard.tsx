@@ -49,9 +49,9 @@ const MovieCard = () => {
   };
 
   return (
-    <div className={styles.cardWrapper}>
+    <div>
       {pathname === "/" ? (
-        <>
+        <div className={styles.cardWrapper}>
           <span className={!movies.length ? styles.emptyText : styles.off}>{EMPTY_RESULT_TEXT}</span>
           {movies.map((el, i) => (
             <button key={el.imdbID} type='button' className={styles.movieCard} onClick={() => handleClickMovieCard(el)}>
@@ -65,7 +65,7 @@ const MovieCard = () => {
                 )}
               </div>
               <div className={styles.textWrapper}>
-                {bookmarkedMovies.map(
+                {bookmarkedMovies?.map(
                   (bookmarkedMovie) =>
                     bookmarkedMovie.imdbID === el.imdbID && (
                       <div key={`bookmark${i}-${el.imdbID}`} className={styles.heart} />
@@ -86,10 +86,10 @@ const MovieCard = () => {
             </button>
           ))}
           <div ref={ref} className={!movies.length ? styles.off : styles.observerDiv} />
-        </>
+        </div>
       ) : (
-        <>
-          {bookmarkedMovies.map((el, i) => (
+        <div className={styles.cardWrapper}>
+          {bookmarkedMovies?.map((el, i) => (
             <button key={el.imdbID} type='button' className={styles.movieCard} onClick={() => handleClickMovieCard(el)}>
               <div className={styles.posterWrapper}>
                 {el.Poster === "N/A" ? (
@@ -116,7 +116,7 @@ const MovieCard = () => {
               </Portal>
             </button>
           ))}
-        </>
+        </div>
       )}
     </div>
   );
